@@ -9,17 +9,23 @@ const app = express();
 dotenv.config();
 app.use(cors());
 
-const userRoutes = require('./routes/user');
 const sequelize = require('./util/database');
+const User = require('./models/user');
+const Expense = require('./models/expense');
+
+const userRoutes = require('./routes/user');
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/user',userRoutes);
 
+User.hasMany(Expense);
+Expense.belongsTo(User);
 
 sequelize
     .sync()
+    // .sync({force:true})
     .then(()=>{
         app.listen(8000);
     })
