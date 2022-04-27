@@ -16,12 +16,14 @@ const Order = require('./models/order');
 
 const userRoutes = require('./routes/user');
 const purchaseRoutes = require('./routes/purchase')
+const passwordRoutes = require('./routes/password')
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/user', userRoutes);
 app.use('/purchase', purchaseRoutes)
+app.use('/password', passwordRoutes)
 
 User.hasMany(Expense);
 Expense.belongsTo(User);
