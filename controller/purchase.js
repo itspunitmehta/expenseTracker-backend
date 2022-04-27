@@ -1,5 +1,6 @@
 const Razorpay = require('razorpay');
-const Order = require('../models/order')
+const Order = require('../models/order');
+const User = require('../models/user');
 
 exports.purchasepremium = (req,res,next)=>{
     try{
@@ -50,4 +51,14 @@ exports.updateTransactionStatus = (req,res,next)=>{
         res.status(403).json({success:false, message:"something went wrong"})
     }
     
+}
+
+exports.getAllUSer = (req,res,next)=>{
+    User.findAll()
+    .then(users=>{
+        return res.status(200).json({users,success:true})
+    })
+    .catch(err=>{
+            console.log(err);
+    })
 }
