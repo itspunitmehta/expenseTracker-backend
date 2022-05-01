@@ -12,6 +12,8 @@ router.post('/signin', userController.signin);
 
 router.post('/addexpenses', userAuth.userAuthenticate, expenseController.addUserExpenses);
 
+router.get('/download', userAuth.userAuthenticate, expenseController.downloadExpenses);
+
 router.get('/getexpenses', userAuth.userAuthenticate, expenseController.getUserExpenses);
 
 router.delete('/deleteexpense/:expenseid', userAuth.userAuthenticate, expenseController.deleteExpenses);

@@ -1,4 +1,6 @@
 const Expense = require('../models/expense');
+const UserServices = require('../services/userservices');
+const S3Services  = require('../services/s3services');
 
 exports.addUserExpenses = (req,response,next) =>{
     const {amount, description, category} = req.body;
@@ -31,3 +33,20 @@ exports.deleteExpenses = (req, res, next) => {
         return res.status(403).json({ success: true, message: "Failed"})
     })
 }
+
+exports.downloadExpenses = async (req,res,next)=>{
+    try {
+        const expenses = await UserServices.userExpenses(req);
+        // console.log(expenses);
+        const stringExpenses = JSON.stringify(expenses);
+        const userId = req.user.id;
+        const filename = `expense${userId}/${new Date}.txt`;//filename should be unique evry time we upload file
+        const fileUrl  = await S3Services.uploadFiletoS3(stringExpenses, filename);
+        console.log(fileUrl)
+        res.status(200).json({fileUrl, success:true})
+    } catch (error) {
+        res.status(500).json({fileUrl:'', success:false, error:error})
+        
+    }
+}
+
