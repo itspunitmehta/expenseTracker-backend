@@ -1,7 +1,10 @@
 const path = require('path');
+const fs = require('fs');
 
 const express = require('express');
 var cors = require('cors')
+const morgan = require('morgan')
+const helmet = require('helmet');
 
 // const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
@@ -20,11 +23,15 @@ const userRoutes = require('./routes/user');
 const purchaseRoutes = require('./routes/purchase')
 const passwordRoutes = require('./routes/password')
 
+const morganLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'),{flags:'a'});
+
 
 // app.use(bodyParser.urlencoded()); // this is handling forms data action data,,,,
 // app.use(bodyParser.json()); // this is used for json
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(helmet());
+app.use(morgan('combined', {stream:morganLogStream}));
 
 app.use('/user', userRoutes);
 app.use('/purchase', purchaseRoutes)

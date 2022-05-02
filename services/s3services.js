@@ -1,14 +1,13 @@
 const AWS = require('aws-sdk');
 
-const uploadFiletoS3 = (data, filename) => {
+const uploadFiletoS3 = async (data, filename) => {
     const BUCKET_NAME = 'expensetrackerapp';
-    const IAM_USER_KEY = 'AKIAUBEHLO6BR6H6TM4C';
-    const IAM_USER_SECRET = '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';
 
-    let s3Buket = new AWS.S3( {
-        accessKeyId: IAM_USER_KEY,
-        secretAccessKey: IAM_USER_SECRET
+    let s3Buket = await new AWS.S3( {
+        accessKeyId: process.env.IAM_USER_KEY,
+        secretAccessKey: process.env.IAM_USER_SECRET
     })
+    console.log(s3Buket.accessKeyId);
         var params = {
             Bucket: BUCKET_NAME,
             Key: filename,
