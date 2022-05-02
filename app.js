@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const https = require('https')
 
 const express = require('express');
 var cors = require('cors')
@@ -19,11 +20,14 @@ const Expense = require('./models/expense');
 const Order = require('./models/order');
 const ForgotPassword = require('./models/password');
 
+const privateKey = fs.readFileSync('server.key');
+const certificate = fs.readFileSync('server.cert');
+
 const userRoutes = require('./routes/user');
 const purchaseRoutes = require('./routes/purchase')
 const passwordRoutes = require('./routes/password')
 
-const morganLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'),{flags:'a'});
+const morganLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags:'a'});
 
 
 // app.use(bodyParser.urlencoded()); // this is handling forms data action data,,,,
@@ -50,7 +54,9 @@ sequelize
     .sync()
     // .sync({force:true})
     .then(()=>{
-        app.listen(8000);
+    //    https.createServer({key:privateKey, cert:certificate}, app)
+    //    .listen(process.env.PORT || 8000);
+       app.listen(process.env.PORT || 8000);
     })
     .catch(err=>{
         console.log(err);
