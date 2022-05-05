@@ -37,12 +37,12 @@ exports.deleteExpenses = (req, res, next) => {
 exports.downloadExpenses = async (req,res,next)=>{
     try {
         const expenses = await UserServices.userExpenses(req);
-        // console.log(expenses);
+        console.log(expenses);
         const stringExpenses = JSON.stringify(expenses);
         const userId = req.user.id;
         const filename = `expense${userId}/${new Date}.txt`;//filename should be unique evry time we upload file
         const fileUrl  = await S3Services.uploadFiletoS3(stringExpenses, filename);
-        console.log(fileUrl)
+        console.log(fileUrl, 'is file url')
         res.status(200).json({fileUrl, success:true})
     } catch (error) {
         res.status(500).json({fileUrl:'', success:false, error:error})

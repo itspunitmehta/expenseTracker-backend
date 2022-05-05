@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="../public/css/main.css">
+</head>
+<body>
+    <nav class="nav-bar">
+        <a class="logo" href="#">
+            <img src="../img/50-505031_log-book-png-png-clip-art-transparent-books.png" alt="random">
+            <h1>ExpenseBook</h1>
+        </a>
+        <div class="end-links">
+             <a  href="../signup/signup.html">SignUp</a>
+             <a class="selected" href="#">SignIn</a>
+        </div> 
+     </nav>
+    <div class="form-class">
+        <form onsubmit="signin(event)">
+            <label for="name">email</label><br>
+            <input type="text" name="email" placeholder="example@email.com"><br>
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Password"><br><br>
+            <button type="submit">Sign In</button>
+            <a href="../forgotpassword/password.html">Forgotten Password?</a>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./login.js" ></script>
+</body>
+</html>

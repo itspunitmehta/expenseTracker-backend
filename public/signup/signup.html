@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../public/css/main.css">
+</head>
+<body>
+    <nav class="nav-bar">
+       <a class="logo" href="#">
+           <img src="../img/50-505031_log-book-png-png-clip-art-transparent-books.png" alt="random">
+           <h1>ExpenseBook</h1>
+       </a>
+       <div class="end-links">
+            <a class="selected" href="#">SignUp</a>
+            <a class="sign-in" href="../login/login.html">SignIn</a>
+       </div> 
+    </nav>
+    <div class="form-class">
+        <form onsubmit="signup(event)">
+            <label for="name">Name</label><br>
+            <input type="text" name="name" placeholder="Hardeep Singh"><br>
+            <label for="email">Enter Email</label><br>
+            <input type="text" name="email" placeholder="example@mail.com"><br>
+            <label for="phone">Enter Phone Number</label><br>
+            <input type="text" name="phone" placeholder="9876543210"><br>
+            <label for="password">Enter Password</label><br>
+            <input type="password" name="password" placeholder="password"><br><br>
+            <button>Signup</button>
+        </form>
+    <a href='../login/login.html'> Existing User - Login</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./signup.js" ></script>
+</body>
+</html>

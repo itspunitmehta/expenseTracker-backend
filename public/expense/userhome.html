@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UserHome</title>
+    <link rel="stylesheet" href="../public/css/main.css">
+</head>
+<body>
+    <button id="btn">☰</button>
+    <nav id="nav">
+        <ul id="menu">
+        <li><a href="https://www.google.com/">Google</a></li>
+        <li><a href="https://student.sharpener.tech/dashboard">SharpnerTech</a></li>
+        <li><a href="#">Youtube</a></li>
+        <li><a href="../login/login.html">LogOut</a></li>
+        </ul>
+    </nav>
+    <nav class="nav-bar">
+        <a class="logo" href="#">
+            <img src="../img/50-505031_log-book-png-png-clip-art-transparent-books.png" alt="random">
+            <h1>ExpenseBook</h1>
+        </a>
+        <div class="rzp-links">
+            <button class="rzp-button1" id="rzp-button1">Buy Premium</button>
+       </div> 
+     </nav>
+     <div class="expense-container">
+        <form onsubmit="addExpense(event)">
+            <label for="expenseamount">Enter Expense Amount:</label>
+            <input type="number" name="expenseamount" required> </input>
+            <label for="description">Enter description:</label>
+            <input type="text" name="description" required> </input>
+            <label for="category">Choose a category:</label>
+            <select id="category" name="category">
+                <option value="Movie">Movies</option>
+                <option value="Fuel">Fuel</option>
+                <option value="Food">Groceries</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Others">Others</option>
+            </select>
+            <button id="expense-btn">Add Expense</button>
+        </form>
+    </div>
+    <!-- <div class="container">
+        <input type="checkbox" id="toggle" name="toggle"><label for="toggle">Dark Theme</label>
+    </div> -->
+    <ul id='listOfExpenses'>
+
+    </ul>
+    <button onclick="download()" id="downloadexpense" class="download-btn">Download File</button>
+    <section class="pagination" id="page">
+        <a href="#/?page=1">1</a>
+        <a href="#/?page=2">2</a>
+    </section>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src='./userhome.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
